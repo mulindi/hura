@@ -1,0 +1,45 @@
+<div class="columns">
+  <div class="column">
+    <div class="panel-container">
+      <%= render 'panel' %>
+    </div>
+  </div>
+
+  <div class="column">
+    <% @jobs.each do |job| %>
+    <div class="columns">
+      <div class="column">
+        <% if !job.avatar.nil? %>
+          <%= link_to image_tag(job.avatar_url(:thumb), alt: job.job_author, width: 100, height: 100), job.url %>
+        <% end %>
+      </div>
+      <div class="column">
+        <h3 class="title"><%= link_to job.title, job %></h3>
+          <ul>
+            <li><%= link_to job.job_author, job.url %></li>
+          </ul>
+        <div class="">
+          <%= sanitize(job.description.truncate(200, separator: '</p>')) %>
+        </div>
+
+        <% if current_user.try(:admin) || job_author(job) %>
+          <ul class="">
+            <li class="">Admin controls: </li>
+            <li class="inline-block">
+              <%= link_to 'View', job, class: 'button' %></li>
+            <li class="">
+              <%= link_to 'Edit', edit_job_path(job), class: 'button' %></li>
+            <li class="">
+              <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %></li>
+          </ul>
+        <% end %>
+
+        </div>
+        <div class="column">
+          <%= job_type(job.job_type) %>
+          <p class=""><%= job.location %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

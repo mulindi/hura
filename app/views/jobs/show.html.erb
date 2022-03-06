@@ -1,0 +1,50 @@
+<div class="columns">
+  <div class="column">
+
+    <p class="clock"> Posted <%= time_ago_in_words(@job.created_at) %> ago</p>
+    <h1 class="title"><%= @job.title %></h1>
+
+    <ul class="list">
+      <li class="inline-block"><%= job_type(@job.job_type) %></li>
+      <li class="inline-block"><i class=""></i> <%= @job.location %></li>
+      <% if @job.remote? %>
+        <li class="inline-block"> Remote Job</li>
+      <% end %>
+    </ul>
+
+    <div class="content">
+      <%= @job.description.html_safe %>
+    </div>
+
+    <%= link_to 'Apply to this job', @job.apply_url, class:"button" %>
+
+  </div>
+
+  <div class="column">
+
+    <% if !@job.avatar.nil? %>
+      <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: "has-text-centered"), @job.url %>
+    <% end %>
+
+    <h5 class=""><%= link_to @job.job_author, @job.url %></h5>
+
+    <div class="">
+    <%= link_to @job.url do %>
+      <i class=""></i>
+    <% end %>
+    </div>
+
+    <%= link_to 'Apply to this job', @job.apply_url, class:"button" %>
+    <% if current_user.try(:admin) || job_author(@job) %>
+      <ul class="">
+        <li class="">Admin controls: </li>
+        <li class="inline-block">
+          <%= link_to 'View', @job, class: 'button' %></li>
+        <li class="inline-block">
+          <%= link_to 'Edit', edit_job_path(@job), class: 'button' %></li>
+        <li class="inline-block">
+          <%= link_to 'Delete', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>

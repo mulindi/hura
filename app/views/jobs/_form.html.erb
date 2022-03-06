@@ -1,0 +1,70 @@
+<%= simple_form_for @job, html: { multipart: true } do |f| %>
+  <%= f.error_notification %>
+  
+  <div class="field">
+    <div class="control">
+      <%= f.input :title, input_html: { class: 'input' }, wrapper: false, label: { text: 'Title', class: 'label' }, placeholder: 'Dev' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.input :apply_url, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }  %>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="field">
+      <div class="control">
+        <label class="label">Job Type:</label>
+        <div class="control">
+          <span class="select">
+              <%= f.input_field :job_type, collection: Job::JOB_TYPES, prompt: "Select a job type" %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.input :location, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, hint: "City, State" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <label for="job[remote]">
+        <%= f.input_field :remote, as: :radio_buttons, collection: [["Remote", true], ["Onsite", false]], hint: "Remote or Onsite" %>
+        Will this job be remote?
+      </label>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.input :description, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="field">
+      <div class="control">
+        <label class="label">Company:</label>
+        <div class="control">
+          <span class="select">
+            <%= f.input_field :company, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: "Company" %>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="field column">
+      <div class="control">
+        <%= f.input :url, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: "Company Website", placeholder: "http://company.com" %>
+      </div>
+    </div>
+  </div>
+
+  <%= f.button :submit, class: "button" %>
+<% end %>

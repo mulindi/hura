@@ -1,0 +1,23 @@
+<nav class="panel">
+  <p> filter by job type</p>
+  <ul>
+    <li>
+      <%= link_to "Full Time", jobs_path(job_type: "full-time") %>
+    </li>
+    <li>
+      <%= link_to "Part Time", jobs_path(job_type: "part-time") %>
+    </li>
+    <li>
+      <%= link_to "Contract", jobs_path(job_type: "contract") %>
+    </li>
+    <li>
+      <%= link_to "Internship", jobs_path(job_type: "internship") %>
+    </li>
+    <li>
+      <%= link_to "Freelance", jobs_path(job_type: "freelance") %>
+    </li>
+    <li>
+      <%= link_to "Volunteer", jobs_path(job_type: "volunteer") %>
+    </li>
+  </ul>
+</nav>
