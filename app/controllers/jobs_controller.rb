@@ -16,7 +16,19 @@ class JobsController < ApplicationController
     @job = current_user.jobs.build
   end
 
-  def create; end
+  def create
+    @job = current_user.jobs.build(job_params)
+
+    respond_to do |format|
+      if @job.save
+        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.json { render :show, status: :created, location: @job }
+      else
+        format.html { render :new }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def update
     respond_to do |format|
@@ -45,6 +57,7 @@ class JobsController < ApplicationController
   end
 
   def job_params
-    params.require(:job).permit(:title, :description, :company, :url, :job_type, :remote, :apply_url, :avatar)
+    params.require(:job).permit(:title, :description, :company, :url, :job_type, :job_author, :remote, :apply_url,
+                                :avatar)
   end
 end
