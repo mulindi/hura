@@ -1,24 +1,22 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_job, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
-    if (params.has_key?(:job_type))
-      @jobs = Job.where(job_type: params[:job_type]).order("created_at DESC")
-    else
-      @jobs = Job.all.order("created_at DESC")
-    end
+    @jobs = if params.key?(:job_type)
+              Job.where(job_type: params[:job_type]).order('created_at DESC')
+            else
+              Job.all.order('created_at DESC')
+            end
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @job = current_user.jobs.build
   end
 
-  def create
-  end
+  def create; end
 
   def update
     respond_to do |format|
@@ -41,6 +39,7 @@ class JobsController < ApplicationController
   end
 
   private
+
   def set_job
     @job = Job.find(params[:id])
   end
