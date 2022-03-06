@@ -35,8 +35,17 @@
   <div class="field">
     <div class="control">
       <label for="job[remote]">
-        <%= f.input_field :remote, as: :radio_buttons, collection: [["Remote", true], ["Onsite", false]], hint: "Remote or Onsite" %>
+        <%= f.input_field :remote, as: :radio_buttons, collection: [["Remote", true], ["Onsite", false], ["Hybrid", false]], hint: "Remote or onsite?" %>
         Will this job be remote?
+      </label>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <label class"experience">
+        <%= f.input_field :job_level, as: :radio_buttons, collection: [["Entry", true], ["Mid", false], ["Senior", false], ["Manager", false], ["Executive", false]], hint: "What level of experience are you looking for?" %>
+        What level of experience are you looking for?
       </label>
     </div>
   </div>
@@ -64,7 +73,27 @@
         <%= f.input :url, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: "Company Website", placeholder: "http://company.com" %>
       </div>
     </div>
+
+    <div class="columns">
+      <div class="field column is-4">
+        <div class="control">
+          <label class="label">Logo Image</label>
+          <div class="file">
+            <label class="file-label">
+              <%= f.input :avatar, as: :file, required: false, input_html: { class:"file-input job-avatar" }, label: false, wrapper: false %>
+                <span class="file-cta">
+                  <span class="file-icon"><i class="fa fa-upload"></i></span>
+                  <span class="file-label">Choose a file…</span>
+                </span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <output id="list"></output>
+      </div>
   </div>
+
 
   <%= f.button :submit, class: "button" %>
 <% end %>
