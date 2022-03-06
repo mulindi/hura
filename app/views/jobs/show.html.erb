@@ -22,11 +22,9 @@
 
   <div class="column">
 
-    <% if !@job.avatar.nil? %>
+    <% if !@job.avatar.file.nil? %>
       <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: "has-text-centered"), @job.url %>
     <% end %>
-
-    <h5 class=""><%= link_to @job.job_author, @job.url %></h5>
 
     <div class="">
     <%= link_to @job.url do %>
@@ -34,7 +32,6 @@
     <% end %>
     </div>
 
-    <%= link_to 'Apply to this job', @job.apply_url, class:"button" %>
     <% if current_user.try(:admin) || job_author(@job) %>
       <ul class="">
         <li class="">Admin controls: </li>

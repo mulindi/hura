@@ -1,23 +1,42 @@
-<nav class="panel">
-  <p> filter by job type</p>
-  <ul>
-    <li>
-      <%= link_to "Full Time", jobs_path(job_type: "full-time") %>
-    </li>
-    <li>
-      <%= link_to "Part Time", jobs_path(job_type: "part-time") %>
-    </li>
-    <li>
-      <%= link_to "Contract", jobs_path(job_type: "contract") %>
-    </li>
-    <li>
-      <%= link_to "Internship", jobs_path(job_type: "internship") %>
-    </li>
-    <li>
-      <%= link_to "Freelance", jobs_path(job_type: "freelance") %>
-    </li>
-    <li>
-      <%= link_to "Volunteer", jobs_path(job_type: "volunteer") %>
-    </li>
-  </ul>
+<nav class="space-y-2 sticky top-0">
+  <div class="px-4 py-2 bg-white w-80">
+    <p class="font-bold pb-3 text-gray-900">Filter by job type</p>
+    <ul class="space-y-1 text-sm font-medium flex flex-wrap text-gray-500">
+      <li class="pt-1">
+        <button class="rounded-full mr-2 bg-blue-500 hover:bg-blue-700 py-2 px-4 text-white">
+          <%= link_to "All", jobs_path %>
+        </button>
+      </li>
+      <li>
+        <button class="rounded-full mr-2 bg-blue-500 hover:bg-blue-700 py-2 px-4 text-white">
+          <%= link_to "Full Time", jobs_path(job_type: "full-time") %>
+        </button>
+      </li>
+      <li>
+        <button class="rounded-full mr-2 bg-blue-500 hover:bg-blue-700 py-2 px-4 text-white">
+          <%= link_to "Part Time", jobs_path(job_type: "part-time") %>
+        </button>
+      </li>
+      <li>
+        <button class="rounded-full mr-2 bg-blue-500 hover:bg-blue-700 py-2 px-4 text-white">
+          <%= link_to "Contract", jobs_path(job_type: "contract") %>
+        </button>
+      </li>
+      <li>
+        <button class="rounded-full mr-2 bg-blue-500 hover:bg-blue-700 py-2 px-4 text-white">
+          <%= link_to "Internship", jobs_path(job_type: "internship") %>
+        </button>
+      </li>
+      <li>
+        <button class="rounded-full mr-2 bg-blue-500 hover:bg-blue-700 py-2 px-4 text-white">
+          <%= link_to "Freelance", jobs_path(job_type: "freelance") %>
+        </button>
+      </li>
+      <li>
+        <button class="rounded-full mx-2 bg-blue-500 hover:bg-blue-700 py-2 px-4 text-white">
+          <%= link_to "Volunteer", jobs_path(job_type: "volunteer") %>
+        </button>
+      </li>
+    </ul>
+  </div>
 </nav>
