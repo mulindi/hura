@@ -21,9 +21,12 @@ ActiveRecord::Schema.define(version: 2022_03_06_094405) do
     t.string "description"
     t.string "company"
     t.string "url"
+    t.string "location"
     t.string "job_type"
+    t.string "job_author"
     t.boolean "remote"
     t.string "apply_url"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
