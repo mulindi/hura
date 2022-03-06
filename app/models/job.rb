@@ -2,14 +2,12 @@ class Job < ApplicationRecord
   belongs_to :user
 
   JOB_TYPES = %w[
-    Full-time
-    Part-time
-    Contract
-    Internship
-    Freelance
-    Volunteer
-    Temporary
-    Other
+    full-time
+    part-time
+    contract
+    internship
+    freelance
+    volunteer
   ].freeze
 
   validates :title, presence: true
